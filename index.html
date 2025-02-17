@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H and J Jewelry</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .logo {
+            width: 200px;
+            transition: transform 4s ease-in-out, opacity 2s ease-in-out;
+        }
+        .hidden {
+            transform: scale(5);
+            opacity: 0;
+        }
+        .carousel {
+            position: relative;
+            width: 300px;
+            height: 60px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        .carousel-inner {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item {
+            background: linear-gradient(45deg, #9A208C, #E11299);
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin: 5px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s;
+        }
+        .carousel-item:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #E11299, #9A208C);
+        }
+        .show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="your-logo.png" alt="H and J Logo" class="logo" id="logo">
+        <div class="carousel" id="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item" onclick="window.location.href='hj-jewelry-shop.html'">H and J Jewelry Shop</div>
+                <div class="carousel-item" onclick="window.location.href='ms-joy-d-jewelry-shop.html'">Ms. Joy D. Jewelry Shop</div>
+                <div class="carousel-item" onclick="window.location.href='hj-jewelry-repair.html'">H and J Jewelry Repair Shop</div>
+                <div class="carousel-item" onclick="window.location.href='hilary-salon.html'">Hilary Salon</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let index = 0;
+        function moveCarousel() {
+            const items = document.querySelectorAll(".carousel-item");
+            const totalItems = items.length;
+            index = (index + 1) % totalItems;
+            document.querySelector(".carousel-inner").style.transform = `translateY(-${index * 60}px)`;
+        }
+        setInterval(moveCarousel, 3000);
+        
+        setTimeout(() => {
+            document.getElementById("logo").classList.add("hidden");
+            setTimeout(() => {
+                document.getElementById("carousel").classList.add("show");
+            }, 2000);
+        }, 3000);
+    </script>
+</body>
+</html>
