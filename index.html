@@ -76,14 +76,9 @@
         }
 
         .nav-item:hover {
-            width: 120px;
-            height: 50px;
-            border-radius: 25px;
+            width: 80px;
+            height: 80px;
             background: white;
-        }
-
-        .nav-container:hover .nav-item:not(:hover) {
-            opacity: 0;
         }
 
         .image-container {
@@ -150,12 +145,19 @@
             }
 
             .nav-container .nav-item {
-                width: 100%;
+                width: 60px;
                 height: 60px;
                 margin: 10px 0;
                 text-align: center;
-                border-radius: 10px;
+                border-radius: 50%;
                 background: pink;
+                transition: all 0.3s ease;
+            }
+
+            .nav-container .nav-item:hover {
+                width: 80px;
+                height: 80px;
+                background: white;
             }
 
             .welcome-text {
