@@ -81,6 +81,10 @@
             background: white;
         }
 
+        .nav-container:hover .nav-item:not(:hover) {
+            opacity: 0;
+        }
+
         .image-container {
             display: flex;
             justify-content: center;
@@ -131,14 +135,21 @@
                 nav.style.display = 'none';
             } else {
                 nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.right = '20px';
+                nav.style.top = '60px';
+                nav.style.background = 'black';
+                nav.style.padding = '10px';
+                nav.style.borderRadius = '10px';
             }
         }
     </script>
 </head>
 <body>
     <div class="header">
-        <div class="logo"><img src="H and J Logo.png"></div>
-        <div class="title">JEWELRY</div>
+        <div class="logo"><img src="H and J Logo.png" width="30"></div>
+        <div class="title">J E W E L R Y</div>
         <button class="menu-button" onclick="toggleMenu()">Menu</button>
         <div class="nav-container">
             <div class="nav-item">B</div>
