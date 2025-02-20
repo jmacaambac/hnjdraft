@@ -24,6 +24,7 @@
             border-bottom-left-radius: 100px 50px;
             border-bottom-right-radius: 100px 50px;
             position: relative;
+            z-index: 10;
         }
 
         .logo {
@@ -129,16 +130,32 @@
             .nav-container {
                 display: none;
                 flex-direction: column;
-                position: absolute;
-                top: 100px;
-                right: 20px;
-                background: black;
-                padding: 10px;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 60%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 20px;
                 border-radius: 10px;
+                z-index: 20;
             }
 
             .menu-button {
                 display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 30;
+            }
+
+            .nav-container .nav-item {
+                width: 100%;
+                height: 60px;
+                margin: 10px 0;
+                text-align: center;
+                border-radius: 10px;
+                background: pink;
             }
 
             .welcome-text {
@@ -154,19 +171,15 @@
             } else {
                 nav.style.display = 'flex';
                 nav.style.flexDirection = 'column';
-                nav.style.position = 'absolute';
-                nav.style.right = '20px';
-                nav.style.top = '60px';
-                nav.style.background = 'black';
-                nav.style.padding = '10px';
-                nav.style.borderRadius = '10px';
+                nav.style.justifyContent = 'center';
+                nav.style.alignItems = 'center';
             }
         }
     </script>
 </head>
 <body>
     <div class="header">
-        <div class="logo"><img src="H and J Logo.png" width="50"></div>
+        <div class="logo"><img src="JPM Logo V.3.b.png" width="50"></div>
         <div class="title">Jewelry</div>
         <button class="menu-button" onclick="toggleMenu()">Menu</button>
         <div class="nav-container">
