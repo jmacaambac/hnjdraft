@@ -102,6 +102,20 @@
             animation: float 3s infinite ease-in-out;
         }
 
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .welcome-text {
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
         @keyframes float {
             0%, 100% {
                 transform: translateY(0);
@@ -126,6 +140,10 @@
             .menu-button {
                 display: block;
             }
+
+            .welcome-text {
+                font-size: 32px;
+            }
         }
     </style>
     <script>
@@ -148,8 +166,8 @@
 </head>
 <body>
     <div class="header">
-        <div class="logo"><img src="H and J Logo.png" width="30"></div>
-        <div class="title">J E W E L R Y</div>
+        <div class="logo"><img src="H and J Logo.png" width="50"></div>
+        <div class="title">Jewelry</div>
         <button class="menu-button" onclick="toggleMenu()">Menu</button>
         <div class="nav-container">
             <div class="nav-item">B</div>
@@ -163,7 +181,6 @@
     </div>
 
     <div class="welcome-section">
-        <div class="welcome-text">Welcome to H and J</div>
         <div class="image-container">
             <div class="floating-image"></div>
             <div class="floating-image"></div>
@@ -171,6 +188,7 @@
             <div class="floating-image"></div>
             <div class="floating-image"></div>
         </div>
+        <div class="welcome-text">Welcome to H and J</div>
     </div>
 </body>
 </html>
