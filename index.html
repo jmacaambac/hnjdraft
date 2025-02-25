@@ -192,12 +192,31 @@
             transform: scale(1.2);
             filter: drop-shadow(0 0 5px pink);
         }
-     @media (max-width: 768px) {
+    .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 20;
+        }
+        
+        @media (max-width: 768px) {
             .side-icons {
-                right: 5px;
+                right: -200px;
+                transition: right 0.3s ease-in-out;
+            }
+            .side-icons.active {
+                right: 10px;
             }
             .title {
                 font-size: 30px;
+            }
+            .menu-toggle {
+                display: block;
             }
         }
     </style>
@@ -209,7 +228,7 @@
             <div class="title">RETAIL NETWORK</div>
         </div>
     </div>
-
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <div class="side-icons">
         <div class="icon-bar">
             <div class="icon"><img src="about.png" alt="About"><span class="menu-text">About</span></div>
@@ -240,5 +259,10 @@
     </div>
 
     <div style="color: #E11299; font-size: 14px; text-shadow: 0px 1px 0px #fff; margin-top: 20px;">&copy; 2025 H and J FASHION and JEWELRY. All Rights Reserved.</div>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.side-icons').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
