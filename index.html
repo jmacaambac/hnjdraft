@@ -36,6 +36,7 @@
             cursor: pointer;
             transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
         }
+
         .description {
             position: absolute;
             bottom: 20px;
@@ -57,46 +58,44 @@
             border-radius: 10px;
         }
 
-        .card:nth-child(1) { background-color: #ffadad; }
-        .card:nth-child(2) { background-color: #ffd6a5; }
-        .card:nth-child(3) { background-color: #fdffb6; }
-        .card:nth-child(4) { background-color: #caffbf; }
     </style>
 </head>
 <body>
     <div class="card-container">
-        <div class="card" style="z-index: 4;" onclick="nextCard(this)">
-        <img src="H and J Logo.png" alt="Card 1">
-        <div class="description">H and J Jewelry Shop – Exquisite Gold Jewelry & Online Shopping</div>
-        </div>
-        <div class="card" style="z-index: 4;" onclick="nextCard(this)">
-        <img src="msjoyd.png" alt="Card 1">
-        <div class="description">Ms. Joy D Jewelry Shop – Exclusive Gold & Fine Jewelry Collections</div>
-        </div>
-        <div class="card" style="z-index: 4;" onclick="nextCard(this)">
-        <img src="H and J Repair Logo.png" alt="Card 1">
-        <div class="description">H and J Jewelry Repair Shop – Expert Jewelry Restoration & Maintenance</div>
-        </div>
-        <div class="card" style="z-index: 4;" onclick="nextCard(this)">
-        <img src="Hilary Salon Logo.png" alt="Card 1">
-        <div class="description">Hilary Salon – Premium Beauty & Hair Care Services</div>
-        </div>
+        <div class="card"><img src="H and J Logo.png" alt="Card 1"><div class="description">H and J Jewelry Shop – Exquisite Gold Jewelry & Online Shopping</div></div>
+        <div class="card"><img src="msjoyd.png" alt="Card 2"><div class="description">Ms. Joy D Jewelry Shop – Exclusive Gold & Fine Jewelry Collections</div></div>
+        <div class="card"><img src="H and J Repair Logo.png" alt="Card 3"><div class="description">H and J Jewelry Repair Shop – Expert Jewelry Restoration & Maintenance</div></div>
+        <div class="card"><img src="Hilary Salon Logo.png" alt="Card 4"><div class="description">Hilary Salon – Premium Beauty & Hair Care Services</div></div>
     </div>
 
     <script>
-        function nextCard(card) {
-    let container = document.querySelector('.card-container');
-    card.style.transform = 'translateY(-500px) rotate(10deg)';
-    card.style.opacity = '0';
+        let cards = document.querySelectorAll('.card');
+        let container = document.querySelector('.card-container');
 
-    setTimeout(() => {
-        card.style.display = 'none';
-        container.appendChild(card);
-        card.style.display = 'block';
-        card.style.transform = 'translateY(0) rotate(0deg)';
-        card.style.opacity = '1';
-    }, 500);
-}
+        function updateZIndex() {
+            cards.forEach((card, index) => {
+                card.style.zIndex = cards.length - index;
+            });
+        }
+        updateZIndex();
+
+        function nextCard(card) {
+            card.style.transform = 'translateY(-500px) rotate(10deg)';
+            card.style.opacity = '0';
+
+            setTimeout(() => {
+                card.style.display = 'none';
+                container.appendChild(card);
+                card.style.display = 'block';
+                card.style.transform = 'translateY(0) rotate(0deg)';
+                card.style.opacity = '1';
+                updateZIndex();
+            }, 500);
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => nextCard(card));
+        });
     </script>
 </body>
 </html>
