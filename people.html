@@ -53,9 +53,16 @@
         .person:hover .person-inner {
             transform: rotateY(180deg);
         }
-        .person:active {
-            transform: scale(1.5);
-            z-index: 10;
+        .person.active {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(2);
+            z-index: 100;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .person-front, .person-back {
@@ -119,7 +126,7 @@
             background-color: #F5C6EC;
             color: #000
         }
-         @media (max-width: 768px) {
+        @media (max-width: 768px) {
             .chart {
                 transform: scale(0.9);
             }
@@ -130,29 +137,13 @@
             }
 
             .person-back img {
-                width: 100px;
-                height: 100px;
+                width: 60px;
+                height: 60px;
             }
 
             .worker-level {
                 flex-direction: column;
                 gap: 20px;
-            }
-
-            .person:active {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) scale(2);
-                z-index: 100;
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            }
-             .person-inner:active {
-                transform: scale(3);
-                transition: transform 0.3s;
             }
         }
     </style>
@@ -161,7 +152,7 @@
     <div class="chart">
 
         <div class="level">
-            <div class="person">
+            <div class="person" onclick="toggleFullscreen(this)">
                 <div class="person-inner">
                     <div class="person-front"><strong>CEO/ Owner</strong></div>
                     <div class="person-back">
@@ -173,7 +164,7 @@
         </div>
 
         <div class="level">
-            <div class="person">
+            <div class="person" onclick="toggleFullscreen(this)">
                 <div class="person-inner">
                     <div class="person-front"><strong>General Manager</strong></div>
                     <div class="person-back">
@@ -187,7 +178,7 @@
         <div class="level">
             <div class="worker-container">
                 <div class="worker-level">
-                    <div class="person">
+                    <div class="person" onclick="toggleFullscreen(this)">
                         <div class="person-inner">
                             <div class="person-front"><strong>Technology Administration and Security Consultant</strong></div>
                             <div class="person-back">
@@ -196,7 +187,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="person">
+                    <div class="person" onclick="toggleFullscreen(this)">
                         <div class="person-inner">
                             <div class="person-front"><strong>Office Manager and Auditor</strong></div>
                             <div class="person-back">
@@ -205,7 +196,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="person">
+                    <div class="person" onclick="toggleFullscreen(this)">
                         <div class="person-inner">
                             <div class="person-front"><strong>Finance Spcialist</strong></div>
                             <div class="person-back">
