@@ -218,6 +218,33 @@ H and J Home Page
             cursor: pointer;
             z-index: 20;
         }
+        .live-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: not-allowed;
+            background-color: gray;
+            color: white;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .live-active {
+            cursor: pointer;
+            background-color: red;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { background-color: red; }
+            50% { background-color: darkred; }
+            100% { background-color: red; }
+        }
         
         @media (max-width: 768px) {
             .side-icons {
@@ -288,6 +315,27 @@ H and J Home Page
         function toggleMenu() {
             document.querySelector('.side-icons').classList.toggle('active');
         }
+    </script>
+         <script>
+        function checkLiveStatus() {
+            const isLive = Math.random() < 0.5;
+            const liveButton = document.getElementById("liveButton");
+
+            if (isLive) {
+                liveButton.textContent = "🔴 Watch Live";
+                liveButton.classList.add("live-active");
+                liveButton.disabled = false;
+                liveButton.onclick = function() {
+                    window.open("https://www.facebook.com/profile.php?id=100092359301228/live", "_blank");
+                };
+            } else {
+                liveButton.textContent = "Live Offline";
+                liveButton.classList.remove("live-active");
+                liveButton.disabled = true;
+            }
+        }
+        setInterval(checkLiveStatus, 10000);
+        checkLiveStatus();
     </script>
 </body>
 </html>
