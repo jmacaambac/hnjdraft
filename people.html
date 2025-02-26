@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H and J Org Chart</title>
+    <title>Organizational Chart</title>
     <style>
         body {
             display: flex;
@@ -33,6 +33,7 @@
             height: 180px;
             perspective: 1000px;
             margin: 10px;
+            position: relative;
         }
 
         .person-inner {
@@ -81,16 +82,27 @@
         .horizontal {
             height: 2px;
             width: 50px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .vertical {
             width: 2px;
             height: 40px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .worker-level {
             display: flex;
             justify-content: center;
+            align-items: center;
+            position: relative;
+            gap: 50px;
+        }
+
+        .worker-container {
+            display: flex;
             align-items: center;
             position: relative;
         }
@@ -102,7 +114,7 @@
         <div class="level">
             <div class="person">
                 <div class="person-inner">
-                    <div class="person-front"><strong>CEO/Owner</strong></div>
+                    <div class="person-front"><strong>CEO/ Owner</strong></div>
                     <div class="person-back">
                         <img src="ceo.jpg" alt="CEO">
                         <strong>Joy S. Dajan</strong>
@@ -126,36 +138,40 @@
 
         <div class="level">
             <div class="connector vertical"></div>
-            <div class="worker-level">
-                <div class="person">
-                    <div class="person-inner">
-                        <div class="person-front"><strong>Security and Technology Consultant</strong></div>
-                        <div class="person-back">
-                            <img src="worker1.jpg" alt="Worker 1">
-                            <strong>Jade P. Mcjump</strong>
+            <div class="worker-container">
+                <div class="connector horizontal"></div>
+                <div class="worker-level">
+                    <div class="person">
+                        <div class="person-inner">
+                            <div class="person-front"><strong>Technology Administration and Security Consultant</strong></div>
+                            <div class="person-back">
+                                <img src="worker1.jpg" alt="Worker 1">
+                                <strong>Jade Kratos Mcjump</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="connector horizontal"></div>
+                    <div class="person">
+                        <div class="person-inner">
+                            <div class="person-front"><strong>Office Manager and Auditor</strong></div>
+                            <div class="person-back">
+                                <img src="worker2.jpg" alt="Worker 2">
+                                <strong>Handerson P. Dajan</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="connector horizontal"></div>
+                    <div class="person">
+                        <div class="person-inner">
+                            <div class="person-front"><strong>Finance Spcialist</strong></div>
+                            <div class="person-back">
+                                <img src="worker3.jpg" alt="Worker 3">
+                                <strong>Hanilyn D. Aclo</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="connector horizontal"></div>
-                <div class="person">
-                    <div class="person-inner">
-                        <div class="person-front"><strong>Office Manager</strong></div>
-                        <div class="person-back">
-                            <img src="worker2.jpg" alt="Worker 2">
-                            <strong>Handerson P. Dajan</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="connector horizontal"></div>
-                <div class="person">
-                    <div class="person-inner">
-                        <div class="person-front"><strong>Finance Specialist</strong></div>
-                        <div class="person-back">
-                            <img src="worker3.jpg" alt="Worker 3">
-                            <strong>Hanilyn D. Aclo</strong>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
