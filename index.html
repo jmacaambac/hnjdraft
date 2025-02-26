@@ -1,3 +1,5 @@
+H and J Home Page
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,11 +46,6 @@
             justify-content: center;
             margin-right: 20px;
         }
-        .logo: hover{
-            transform: translateY(30px);
-            background: #F5C6EC;
-        }  
-            
         .title {
             color: white;
             font-size: 80px;
@@ -151,12 +148,19 @@
             background: #FFEAEA;
             border-radius: 50%;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
-            display: inline-block;
+            animation: float 3s infinite ease-in-out;
+            display: flex;
             justify-content: center;
             align-items: center;
             transition: transform 0.3s ease-in-out;
             z-index: -1;
             
+        }
+        
+        .floating-image:hover {
+            background: #E11299;
+            border-radius: 10%;
+            padding: 3px;
         }
 
         .welcome-section {
