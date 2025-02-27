@@ -245,18 +245,22 @@ H and J Home Page
             50% { background-color: darkred; }
             100% { background-color: red; }
         }
-         #floating-iframe {
+         #floating-iframe-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
     width: 267px;
     height: 591px;
-    border: none;
-    overflow: hidden;
     z-index: 1000;
+    cursor: grab;
+  }
+
+  #floating-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     border-radius: 10px;
-    cursor: grab;
   }
         @media (max-width: 768px) {
             .side-icons {
@@ -314,8 +318,14 @@ H and J Home Page
         </div>
         <div class="welcome-text">Welcome to H and J</div>
     </div>
- <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2F100092359301228%2Fvideos%2F1185070660071333%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-    <div class="social-icons">
+  <div id="floating-iframe-container">
+  <iframe id="floating-iframe" 
+          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2F100092359301228%2Fvideos%2F1185070660071333%2F&show_text=true&width=267&t=0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+  </iframe>
+</div>
+        <div class="social-icons">
         <a href="tel:+639771540130"><img src="contact me.png" alt="Call Me"></a>
         <a href="https://www.tiktok.com/@h.and.j.pawnshop?_t=8ikLZjv07a3&_r=1&fbclid=IwY2xjawIqTeJleHRuA2FlbQIxMAABHeCmg2hkOhVJ8jwBkHe5pxoKVmfMn9igFPfVZrva9EVD4BdaIwOhzDnlXw_aem_yD8dYk_f4lbQ8wsTCKqoaA"><img src="tiktok.png" alt="TikTok"></a>
         <a href="https://www.facebook.com/profile.php?id=100092359301228"><img src="facebook.png" alt="Facebook"></a>
@@ -349,32 +359,32 @@ H and J Home Page
         setInterval(checkLiveStatus, 10000);
         checkLiveStatus();
     </script>
-    <script>
+   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const iframe = document.getElementById("floating-iframe");
+    const iframeContainer = document.getElementById("floating-iframe-container");
     let isDragging = false;
     let offsetX, offsetY;
 
-    iframe.addEventListener("mousedown", (e) => {
+    iframeContainer.addEventListener("mousedown", (e) => {
       isDragging = true;
-      offsetX = e.clientX - iframe.getBoundingClientRect().left;
-      offsetY = e.clientY - iframe.getBoundingClientRect().top;
-      iframe.style.cursor = "grabbing";
+      offsetX = e.clientX - iframeContainer.getBoundingClientRect().left;
+      offsetY = e.clientY - iframeContainer.getBoundingClientRect().top;
+      iframeContainer.style.cursor = "grabbing";
     });
 
     document.addEventListener("mousemove", (e) => {
       if (isDragging) {
         let x = e.clientX - offsetX;
         let y = e.clientY - offsetY;
-        iframe.style.left = x + "px";
-        iframe.style.top = y + "px";
-        iframe.style.position = "fixed";
+        iframeContainer.style.left = x + "px";
+        iframeContainer.style.top = y + "px";
+        iframeContainer.style.position = "fixed";
       }
     });
 
     document.addEventListener("mouseup", () => {
       isDragging = false;
-      iframe.style.cursor = "grab";
+      iframeContainer.style.cursor = "grab";
     });
   });
 </script>
