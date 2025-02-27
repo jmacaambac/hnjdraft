@@ -245,7 +245,7 @@ H and J Home Page
             50% { background-color: darkred; }
             100% { background-color: red; }
         }
-  #floating-iframe-container {
+ #floating-iframe-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -254,13 +254,16 @@ H and J Home Page
     z-index: 1000;
     cursor: grab;
     user-select: none;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    padding: 5px;
   }
 
   #floating-iframe {
     width: 100%;
     height: 100%;
     border: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     border-radius: 10px;
   }
         @media (max-width: 768px) {
@@ -362,35 +365,42 @@ H and J Home Page
     </script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const iframeContainer = document.getElementById("floating-iframe-container");
-    let isDragging = false;
-    let offsetX = 0, offsetY = 0;
+    const container = document.getElementById("floating-iframe-container");
+    let isDragging = false, startX, startY, initialX, initialY;
 
-    iframeContainer.addEventListener("mousedown", (e) => {
+    container.addEventListener("mousedown", (e) => {
       isDragging = true;
-      offsetX = e.clientX - iframeContainer.getBoundingClientRect().left;
-      offsetY = e.clientY - iframeContainer.getBoundingClientRect().top;
-      iframeContainer.style.cursor = "grabbing";
+      startX = e.clientX;
+      startY = e.clientY;
+      initialX = container.offsetLeft;
+      initialY = container.offsetTop;
+      container.style.cursor = "grabbing";
     });
 
     document.addEventListener("mousemove", (e) => {
       if (!isDragging) return;
-      let x = e.clientX - offsetX;
-      let y = e.clientY - offsetY;
 
-      const maxX = window.innerWidth - iframeContainer.offsetWidth;
-      const maxY = window.innerHeight - iframeContainer.offsetHeight;
+      let newX = initialX + (e.clientX - startX);
+      let newY = initialY + (e.clientY - startY);
 
-      x = Math.max(0, Math.min(x, maxX));
-      y = Math.max(0, Math.min(y, maxY));
+      const maxX = window.innerWidth - container.offsetWidth;
+      const maxY = window.innerHeight - container.offsetHeight;
 
-      iframeContainer.style.left = `${x}px`;
-      iframeContainer.style.top = `${y}px`;
+      newX = Math.max(0, Math.min(newX, maxX));
+      newY = Math.max(0, Math.min(newY, maxY));
+
+      container.style.left = `${newX}px`;
+      container.style.top = `${newY}px`;
     });
 
     document.addEventListener("mouseup", () => {
       isDragging = false;
-      iframeContainer.style.cursor = "grab";
+      container.style.cursor = "grab";
+    });
+
+    document.addEventListener("mouseleave", () => {
+      isDragging = false;
+      container.style.cursor = "grab";
     });
   });
 </script>
