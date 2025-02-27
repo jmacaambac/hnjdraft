@@ -245,7 +245,7 @@ H and J Home Page
             50% { background-color: darkred; }
             100% { background-color: red; }
         }
-         #floating-iframe-container {
+  #floating-iframe-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -253,6 +253,7 @@ H and J Home Page
     height: 591px;
     z-index: 1000;
     cursor: grab;
+    user-select: none;
   }
 
   #floating-iframe {
@@ -260,7 +261,7 @@ H and J Home Page
     height: 100%;
     border: none;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    border-radius: 30px;
+    border-radius: 10px;
   }
         @media (max-width: 768px) {
             .side-icons {
@@ -359,11 +360,11 @@ H and J Home Page
         setInterval(checkLiveStatus, 10000);
         checkLiveStatus();
     </script>
-   <script>
+  <script>
   document.addEventListener("DOMContentLoaded", function () {
     const iframeContainer = document.getElementById("floating-iframe-container");
     let isDragging = false;
-    let offsetX, offsetY;
+    let offsetX = 0, offsetY = 0;
 
     iframeContainer.addEventListener("mousedown", (e) => {
       isDragging = true;
@@ -373,13 +374,18 @@ H and J Home Page
     });
 
     document.addEventListener("mousemove", (e) => {
-      if (isDragging) {
-        let x = e.clientX - offsetX;
-        let y = e.clientY - offsetY;
-        iframeContainer.style.left = x + "px";
-        iframeContainer.style.top = y + "px";
-        iframeContainer.style.position = "fixed";
-      }
+      if (!isDragging) return;
+      let x = e.clientX - offsetX;
+      let y = e.clientY - offsetY;
+
+      const maxX = window.innerWidth - iframeContainer.offsetWidth;
+      const maxY = window.innerHeight - iframeContainer.offsetHeight;
+
+      x = Math.max(0, Math.min(x, maxX));
+      y = Math.max(0, Math.min(y, maxY));
+
+      iframeContainer.style.left = `${x}px`;
+      iframeContainer.style.top = `${y}px`;
     });
 
     document.addEventListener("mouseup", () => {
