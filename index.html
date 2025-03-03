@@ -292,15 +292,17 @@
            #floating-iframe-container {
             display: none;
             }
-           .live-button {
+          .live-button {
     position: fixed;
-    bottom: 20px; 
+    bottom: 20px;  
     left: 50%;
-    transform: translateX(-50%); 
-    width: 150px;     
-    padding: 10px 20px; 
+    transform: translateX(-50%);  
+    width: 150px !important;
+    max-width: 150px !important;  
+    padding: 10px 20px;  
     font-size: 16px;  
     text-align: center;
+    white-space: nowrap; 
                z-index: 1000;
            }
        }
